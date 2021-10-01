@@ -42,9 +42,9 @@ void Rectangle::Expand() {
 // original function moved the row out instead of in, correctly changed the col
 void Rectangle::Shrink() {
     int p1_row = p1_.x;
-    if (p1_row != 0) {p1_row -= 1;}
+    if (p1_row != 0 && p1_row != p2_.x+1) {p1_row -= 1;}
     int p2_col = p2_.y;
-    if (p2_col != 0) {p2_col -= 1;}
+    if (p2_col != 0 && p2_col != p1_.y+1) {p2_col -= 1;}
     Point newP1 = {p1_row,p1_.y+1};
     Point newP2 = {p2_.x+1,p2_col};
     p1_ = newP1;
