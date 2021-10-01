@@ -12,6 +12,7 @@ int Rectangle::GetWidth() { return (p2_.x-p1_.x); }
 // between p2.y and p2.y
 int Rectangle::GetHeight() { return (p2_.y-p1_.y); }
 //returns true iff this rectangle shares any points with the other one
+//original function would never return true
 bool Rectangle::Overlaps(Rectangle& other) {
     if ((p1_.x == other.get_p1().x) && (p1_.y == other.get_p1().y)) {return true;}
     if ((p2_.x == other.get_p1().x) && (p2_.y == other.get_p1().y)) {return true;}
@@ -24,6 +25,7 @@ bool Rectangle::Overlaps(Rectangle& other) {
 int Rectangle::CalculateArea() { return (GetHeight() * GetWidth() * -1); }
 // moves the bottom left coordinate down one and to the left one
 // moves the upper right coordinate up one and to the right one
+// original function moved the row in instead of out, correctly changed the col
 void Rectangle::Expand() {
     Point newP1 = {p1_.x+1,p1_.y-1};
     Point newP2 = {p2_.x-1,p2_.y+1};
@@ -32,6 +34,7 @@ void Rectangle::Expand() {
 }
 // moves the bottom left coordinate up one and to the right one
 // moves the upper right coordinate down one and to the left one
+// original function moved the row out instead of in, correctly changed the col
 void Rectangle::Shrink() {
     Point newP1 = {p1_.x-1,p1_.y+1};
     Point newP2 = {p2_.x+1,p2_.y-1};
