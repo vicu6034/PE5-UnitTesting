@@ -28,8 +28,12 @@ int Rectangle::CalculateArea() { return (abs(GetHeight() * GetWidth())); }
 // moves the upper right coordinate up one and to the right one
 // original function moved the row in instead of out, correctly changed the col
 void Rectangle::Expand() {
-    Point newP1 = {p1_.x+1,p1_.y-1};
-    Point newP2 = {p2_.x-1,p2_.y+1};
+    int p1_col = p1_.y;
+    if (p1_col != 0) {p1_col -= 1;}
+    int p2_row = p2_.x;
+    if (p2_row != 0) {p2_row -= 1;}
+    Point newP1 = {p1_.x+1,p1_col};
+    Point newP2 = {p2_row,p2_.y+1};
     p1_ = newP1;
     p2_ = newP2;
 }
@@ -37,8 +41,12 @@ void Rectangle::Expand() {
 // moves the upper right coordinate down one and to the left one
 // original function moved the row out instead of in, correctly changed the col
 void Rectangle::Shrink() {
-    Point newP1 = {p1_.x-1,p1_.y+1};
-    Point newP2 = {p2_.x+1,p2_.y-1};
+    int p1_row = p1_.x;
+    if (p1_row != 0) {p1_row -= 1;}
+    int p2_col = p2_.y;
+    if (p2_col != 0) {p2_col -= 1;}
+    Point newP1 = {p1_row,p1_.y+1};
+    Point newP2 = {p2_.x+1,p2_col};
     p1_ = newP1;
     p2_ = newP2;
 }
