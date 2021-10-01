@@ -1,4 +1,5 @@
 #include "Rectangle.h"
+#include <cmath>
 //Author: Vincent Curran
 //constructor
 Rectangle::Rectangle(Point p1, Point p2) {
@@ -22,7 +23,7 @@ bool Rectangle::Overlaps(Rectangle& other) {
 }
 //returns area of the rectangle
 //Original function would return the area but negative 
-int Rectangle::CalculateArea() { return (GetHeight() * GetWidth() * -1); }
+int Rectangle::CalculateArea() { return (abs(GetHeight() * GetWidth())); }
 // moves the bottom left coordinate down one and to the left one
 // moves the upper right coordinate up one and to the right one
 // original function moved the row in instead of out, correctly changed the col
